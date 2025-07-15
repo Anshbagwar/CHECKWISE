@@ -17,7 +17,8 @@ const DisplayTechIcons: React.FC<TechIconProps> = ({ techStack }) => {
 
         const result = await response.json();
 
-        if (!response.ok) throw new Error(result.error || "Failed to fetch tech logos");
+        if (!response.ok)
+          throw new Error(result.error || "Failed to fetch tech logos");
 
         setIcons(result);
       } catch (error) {
@@ -31,15 +32,21 @@ const DisplayTechIcons: React.FC<TechIconProps> = ({ techStack }) => {
 
   return (
     <div className="flex gap-2">
-      {icons.slice(0, 3).map(({ tech, url }) => (
+      {icons.slice(0, 3).map((icon) => (
         <div
-          key={tech}
+          key={icon.tech}
           className="relative group bg-dark-300 rounded-full flex items-center justify-center"
         >
           <span className="tech-tooltip absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs rounded px-2 py-1 hidden group-hover:block">
-            {tech}
+            {icon.tech}
           </span>
-         <Image src="/logo.svg" alt="Logo" width={100} height={100} />
+          <Image
+            src={icon.url}
+            alt={icon.tech}
+            width={20}
+            height={20}
+            className="size-5"
+          />
         </div>
       ))}
     </div>
