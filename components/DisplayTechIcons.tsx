@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import type { TechIconProps } from "@/types";
 
@@ -39,7 +39,7 @@ const DisplayTechIcons: React.FC<TechIconProps> = ({ techStack }) => {
           <span className="tech-tooltip absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs rounded px-2 py-1 hidden group-hover:block">
             {tech}
           </span>
-          <img src={url} alt={tech} width={20} height={20} className="size-5" />
+         <Image src="/logo.svg" alt="Logo" width={100} height={100} />
         </div>
       ))}
     </div>
